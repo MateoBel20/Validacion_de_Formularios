@@ -1,0 +1,87 @@
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* General Styles */
+form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 3px solid #000000;
+  border-radius: 10px;
+  background-color: #dddacc;
+  font-family: Arial, sans-serif;
+}
+
+/* Labels and Inputs */
+p {
+  margin-bottom: 15px;
+}
+
+p input[type="text"],
+p input[type="date"],
+p textarea,
+p select {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+p textarea {
+  resize: vertical;
+}
+
+/* Radio Buttons */
+p input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* Checkboxes */
+p input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* Error Messages */
+div p {
+  color: #000000;
+  font-size: 12px;
+  margin: 5px 0 0 0;
+}
+
+/* Button */
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+  background-color: #45a049;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  form {
+    padding: 10px;
+  }
+}
+
+re-captcha {
+  display: block;
+  margin: 10px 0;
+}

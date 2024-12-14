@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Laboratorio 2 - Unidad 2</h1>
+    <form [formGroup]="form" (ngSubmit)="save($event)">
+      <p>
+        Nombre Completo: <br />
+        <input type="text" formControlName="name" />
+      </p>
+      <div *ngIf="name?.errors && form.get('name')?.touched">
+        <p *ngIf="name?.hasError('required')">Es un campo Requrido</p>
+      </div>
+      <p>
+        Número de Cédula: <br />
+        <input type="text" formControlName="cedula" />
+      </p>
+      <div *ngIf="cedula?.errors && form.get('cedula')?.touched">
+        <p *ngIf="cedula?.hasError('required')">Es un campo Requrido</p>
+        <p *ngIf="cedula?.hasError('maxlength')">
+          Son 10 digítios el número de cédula
+        </p>
+        <p *ngIf="cedula?.hasError('minlength')">
+          Son 10 digítios el número de cédula
+        </p>
+      </div>
+      <p>
+        Fecha de Nacimiento: <br />
+        <input type="date" formControlName="date" />
+      </p>
+      <div *ngIf="date?.errors && form.get('date')?.touched">
+        <p *ngIf="date?.hasError('required')">Es un campo Requrido</p>
+      </div>
+      <p>
+        Correo Electrónico: <br />
+        <input type="text" formControlName="email" />
+      </p>
+      <div *ngIf="email?.errors && form.get('email')?.touched">
+        <p *ngIf="email?.hasError('required')">Es un campo Requrido</p>
+        <p *ngIf="email?.hasError('email')">
+          Ingresa bien el correo electrónico
+        </p>
+      </div>
+
+      <p>
+        País de Residencia: <br />
+        <select formControlName="category">
+          <option value="1">Ecuador</option>
+          <option value="2">Colombia</option>
+          <option value="3">Perú</option>
+        </select>
+      </p>
+      <div *ngIf="category?.errors && form.get('category')?.touched">
+        <p *ngIf="category?.hasError('required')">Es un campo Requrido</p>
+      </div>
+
+      <p>
+        Género: <br />
+        <input
+          type="radio"
+          name="gender"
+          formControlName="gender"
+          value="male"
+        />
+        Hombre <br />
+        <input
+          type="radio"
+          name="gender"
+          formControlName="gender"
+          value="female"
+        />Mujer <br />
+        <input
+          type="radio"
+          name="gender"
+          formControlName="gender"
+          value="other"
+        />Otro <br />
+      </p>
+
+      <p>
+        Bibliografía: <br />
+        <textarea cols="30" rows="10" formControlName="text"></textarea>
+        <small>{{ form.get("text")?.value.length }}/1000</small>
+      </p>
+      <div *ngIf="textField?.errors && form.get('text')?.touched">
+        <p *ngIf="textField?.hasError('required')">Es un Campo Requerido</p>
+        <p *ngIf="textField?.hasError('maxlength')">
+          Máximo son 1000 carácteres
+        </p>
+        <p *ngIf="textField?.hasError('minlength')">
+          Mínimo son 100 carácteres
+        </p>
+      </div>
+      <p>
+        <input type="checkbox" formControlName="terms" />
+        Acepto los términos y condiciones.
+      </p>
+      <div *ngIf="terms?.errors && form.get('terms')?.touched">
+        <p *ngIf="terms?.hasError('required')">Es un campo Requrido</p>
+      </div>
+
+      <p>
+        <re-captcha
+          formControlName="recaptcha"
+          (resolved)="onCaptchaResolved($event)"
+          siteKey="6Ld0rpsqAAAAANQZwXtNcMjGs-D-PxffeDCyTMVm"
+        ></re-captcha>
+      </p>
+
+      <div
+        *ngIf="form.get('recaptcha')?.invalid && form.get('recaptcha')?.touched"
+      >
+        <p>El campo de reCAPTCHA es obligatorio</p>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid">Guardar</button>
+    </form>
+  </body>
+</html>
